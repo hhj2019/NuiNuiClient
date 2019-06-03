@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="music_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.manager_music_controller">
+   <children>
+      <TableView fx:id="music_table" layoutX="30.0" layoutY="79.0" prefHeight="350.0" prefWidth="691.0">
+        <columns>
+          <TableColumn fx:id="music_no_col" prefWidth="40.0" text="NO" />
+          <TableColumn fx:id="album_img_col" prefWidth="90.0" />
+            <TableColumn fx:id="music_name_col" prefWidth="200.0" text="제목" />
+            <TableColumn fx:id="music_time_col" prefWidth="60.0" text="재생시간" />
+            <TableColumn fx:id="artist_col" prefWidth="60.0" text="아티스트" />
+            <TableColumn fx:id="album_name_col" prefWidth="150.0" text="앨범" />
+            <TableColumn fx:id="lyrics_col" prefWidth="40.0" text="가사" />
+            <TableColumn fx:id="ganre_col" prefWidth="50.0" text="장르" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="insert_music" layoutX="621.0" layoutY="29.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140);" text="노래추가" />
+      <Pagination fx:id="music_pagination" layoutX="30.0" layoutY="429.0" prefHeight="51.0" prefWidth="691.0" />
+   </children>
+</Pane>

@@ -1,0 +1,134 @@
+package kr.or.ddit.nn.view.myInfo;
+
+import java.io.IOException;
+import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import kr.or.ddit.nn.main.Session;
+import kr.or.ddit.nn.service.playlist.PlaylistService;
+import kr.or.ddit.nn.vo.playlist.PlaylistVO;
+
+public class Playlist_update_Controller implements Initializable{
+
+	@FXML BorderPane main;
+	@FXML Pane mainPane;
+	@FXML JFXTextField update_playlist_Name;
+	@FXML JFXButton btn_update_Playlist;
+	@FXML JFXButton close_btn;
+	public static int playlistt;
+	
+	private Registry reg;
+	private PlaylistService pls;
+	private PlaylistVO playlistvo;
+	
+	private void changeScene(String url) {
+		Parent upParent = null;
+		try {
+			upParent = FXMLLoader.load(getClass().getResource(url));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}			
+		mainPane.getChildren().setAll(upParent);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			pls = (PlaylistService) reg.lookup("PlaylistService");
+		} catch (RemoteException e2) {
+			e2.printStackTrace();
+		} catch (NotBoundException e2) {
+			e2.printStackTrace();
+		}
+		
+		
+		
+		btn_update_Playlist.setOnAction(e-> {
+			playlistvo = new PlaylistVO();
+			playlistvo.setMem_id(Session.getUser().getMem_id());
+			playlistvo.setPlaylist_id(playlistt);
+			playlistvo.setPlaylist_name(update_playlist_Name.getText());
+					
+			if (update_playlist_Name.getText().isEmpty()) {
+				errMsg("수정실패", "빈 항목이 존재합니다.");
+				return;
+			} else {
+				Alert updateReal = new Alert(AlertType.CONFIRMATION);
+				updateReal.setTitle("플레이리스트 수정");
+				updateReal.setHeaderText("수정");
+				updateReal.setContentText("플레이리스트를 수정하시겠습니까?");
+				ButtonType updateResult = updateReal.showAndWait().get();
+				//OK버튼 클릭시
+				if(updateResult == ButtonType.OK) {
+					try {
+						pls.updatePlaylist(playlistvo);
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
+					OKMsg("수정완료", "자주묻는질문을 수정했습니다.");
+
+					changeScene("My_Playlist_Main.fxml");
+				// cancel버튼 클릭시
+				}else if(updateResult == ButtonType.CANCEL){
+					changeScene("My_Playlist_Main.fxml");
+				}
+			}
+		});
+		
+		close_btn.setOnAction(e-> {
+			changeScene("My_Playlist_Main.fxml");
+		});
+	}
+	/**
+	 * 완료메세지 출력
+	 * 
+	 * @param headerText
+	 * @param msg
+	 */
+	public void OKMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.INFORMATION);
+		errAlert.setTitle("성공");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+	/**
+	 * 에러메세지 출력
+	 * 
+	 * @param headerText
+	 * @param msg
+	 */
+	public void errMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("오류");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+}
+
+
+
+

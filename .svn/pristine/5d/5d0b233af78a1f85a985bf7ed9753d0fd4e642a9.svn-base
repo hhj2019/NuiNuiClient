@@ -1,0 +1,70 @@
+.table-view{
+    -fx-border-color:#8c008c;
+    -fx-border-width:1;    
+}
+
+.table-view:focused{
+    -fx-background-color: transparent,-fx-box-border,-fx-control-inner-background;
+}
+
+.table-view .column-header {
+    -fx-background-color: white;
+    -fx-border-color:#8c008c;
+}
+
+.table-view .column-header-background {
+    -fx-border-color:#8c008c;
+    -fx-border-width :0 0 1 0;
+}
+
+.table-view .table-row-cell .text{
+    -fx-fill:black;
+    -fx-alignment:center;
+    -fx-font-size:12px;
+}
+
+.table-view .table-column {
+    -fx-border-color: #8c008c;
+    -fx-border-width : 0 0 0 0;
+    -fx-alignment:center;
+}
+
+.table-view .table-column .label{
+    -fx-text-fill: black;
+    -fx-alignment:center;
+    -fx-font-size:12px;
+}
+
+.table-view .table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, white;
+}
+
+.table-view .table-row-cell:selected {
+   -fx-background-color:#ffe6ff;
+}
+
+.table-view .table-row-cell:selected .text {
+    -fx-fill: black;
+}
+
+.pagination .pagination-control .button, .pagination .toggle-button {
+    
+    -fx-border-color: transparent;
+}
+
+.pagination .pagination-control .toggle-button:selected {   
+    -fx-background-color: #8c008c;
+    -fx-text-fill: white;
+}
+
+.pagination .pagination-control .toggle-button, .pagination .pagination-control .button  {   
+    -fx-background-color: transparent;
+}
+
+.pagination .pagination-control .left-arrow, .right-arrow{
+    -fx-background-color: black;
+}
+
+.pagination .label {
+  -fx-text-fill: black;
+}

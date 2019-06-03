@@ -1,0 +1,6 @@
+.button{
+	-fx-background-color: rgba(128,0,128,0);
+	-fx-text-alignment: left;	
+	-fx-text-fill: white;
+	-fx-padding: 0 0 0 15px;
+}

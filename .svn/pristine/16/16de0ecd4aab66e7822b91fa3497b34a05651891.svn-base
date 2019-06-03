@@ -1,0 +1,175 @@
+package kr.or.ddit.nn.view.chart;
+
+import java.io.IOException;
+import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.util.Callback;
+import kr.or.ddit.nn.main.MainController;
+import kr.or.ddit.nn.main.Session;
+import kr.or.ddit.nn.service.playlist.PlaylistService;
+import kr.or.ddit.nn.service.playlistitem.PlaylistItemService;
+import kr.or.ddit.nn.view.myInfo.My_Playlistitem_Controller;
+import kr.or.ddit.nn.vo.playlist.PlaylistVO;
+import kr.or.ddit.nn.vo.playlistitem.PlaylistItemVO;
+
+public class Chat_playlist_controller implements Initializable{
+
+	@FXML BorderPane Mypage;
+	@FXML Pane mainPane;
+	@FXML Pagination pga;
+	@FXML TableView<PlaylistVO> playlist_table;
+	@FXML TableColumn<PlaylistVO, Integer> playlist_no_col;
+	@FXML TableColumn<PlaylistVO, String> playlist_info_col;
+	@FXML JFXButton info_playlist;
+	@FXML JFXButton add_playlist;
+	@FXML JFXButton btn_insert_Playlist;
+	
+	private Registry reg;
+	private PlaylistService pls;
+	private PlaylistItemService playlistItemService;
+	int cnt_de = 0;
+	int real_no = 0;
+	
+	private int from, to, itemsForPage;
+	private ObservableList<PlaylistVO> currentPageDate;
+	private ObservableList<PlaylistVO> pList;
+	
+	/**
+	 * 창전환
+	 * 
+	 * @param url
+	 */
+	private void changeScene(String url) {
+		Parent upParent = null;
+		try {
+			upParent = FXMLLoader.load(getClass().getResource(url));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}			
+		mainPane.getChildren().setAll(upParent);
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			pls = (PlaylistService) reg.lookup("PlaylistService");
+			playlistItemService = (PlaylistItemService) reg.lookup("PlaylistItemService");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		
+		pList = FXCollections.observableArrayList();
+		try {
+			pList.setAll(pls.selectPlayListAll(Session.getUser().getMem_id()));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		playlist_no_col.setCellValueFactory(new PropertyValueFactory<>("playlist_id"));
+		playlist_info_col.setCellValueFactory(new PropertyValueFactory<>("playlist_name"));
+
+		
+		playlist_table.setItems(pList);
+		
+		
+		itemsForPage = 10; // 한페이지에 보여줄 항목 수 설정
+
+		int totItemCnt = pList.size();
+		int totPageCnt = totItemCnt % itemsForPage == 0 ? totItemCnt / itemsForPage : totItemCnt / itemsForPage + 1;
+		pga.setPageCount(totPageCnt); // 전체 페이지 수 설정
+
+		pga.setPageFactory(new Callback<Integer, Node>() {
+
+			@Override
+			public Node call(Integer param) {
+				from = param * itemsForPage;
+				to = from + itemsForPage - 1;
+				playlist_table.setItems(getTableViewDate(from, to));
+
+				return playlist_table;
+			}
+
+		});
+		
+		info_playlist.setOnAction(e-> {
+			PlaylistVO playlistVO = playlist_table.getSelectionModel().getSelectedItem();
+			Chart_playlistitem_controller.infoplaylistitem = playlistVO.getPlaylist_id();
+			changeScene("Chart_Playlistitem.fxml");
+		});
+		
+		add_playlist.setOnAction(e-> {
+			PlaylistItemVO playlistItemVO = new PlaylistItemVO();
+			int playlist_id = playlist_table.getSelectionModel().getSelectedItem().getPlaylist_id();
+			playlistItemVO.setPlaylist_id(playlist_id);
+			playlistItemVO.setMusic_id(chart_main_controller.music_id);
+			try {
+				if(playlistItemService.insertPlayListItem(playlistItemVO) >0) {
+					infoMsg("담기 완료", "플레이리스트에 노래를 담았습니다.");
+				}else {
+					errMsg("담기 실패", "플레이리스트에 노래를 담지 못했습니다.");
+				}
+				
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		btn_insert_Playlist.setOnAction(e-> {
+			changeScene("chart_insert_Playlist.fxml");
+		});
+		
+	}
+	
+	
+	private void infoMsg(String headerText, String msg) {
+		Alert infoAlert = new Alert(AlertType.INFORMATION);
+		infoAlert.setTitle("알림");
+		infoAlert.setHeaderText(headerText);
+		infoAlert.setContentText(msg);
+		infoAlert.showAndWait();
+	}
+
+	private void errMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("오류");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+	private ObservableList<PlaylistVO> getTableViewDate(int from, int to) {
+		currentPageDate = FXCollections.observableArrayList(); // 현재페이지 데이터 초기화
+		int toSize = pList.size();
+		for (int i = from; i <= to && i < toSize; i++) {
+			currentPageDate.add(pList.get(i));
+		}
+		return currentPageDate;
+	}
+
+}

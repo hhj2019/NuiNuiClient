@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.album.AlbumDetail_controller">
+   <children>
+      <ImageView fx:id="albumArt" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="music_table" layoutX="32.0" layoutY="303.0" prefHeight="265.0" prefWidth="535.0">
+        <columns>
+          <TableColumn fx:id="albumArt_col" prefWidth="75.0" />
+          <TableColumn fx:id="music_name_col" prefWidth="180.0" text="제목" />
+            <TableColumn fx:id="music_playtime_col" prefWidth="75.0" text="플레이시간" />
+            <TableColumn fx:id="music_artist_col" prefWidth="120.0" text="가수" />
+            <TableColumn fx:id="music_genre" prefWidth="85.0" text="장르" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="albumName" layoutX="363.0" layoutY="63.0" prefHeight="23.0" prefWidth="200.0" />
+      <JFXTextField fx:id="album_artist" layoutX="363.0" layoutY="125.0" />
+      <JFXTextField fx:id="albumDate" layoutX="363.0" layoutY="189.0" />
+      <Label layoutX="300.0" layoutY="67.0" text="앨범 이름">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="309.0" layoutY="193.0" text="발매일">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="129.0" text="가수 이름">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="cencle_btn" layoutX="259.0" layoutY="591.0" style="-fx-border-color: rgb(140,0,140);" text="뒤로가기">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

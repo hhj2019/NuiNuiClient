@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.fontawesome.Icon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox>
+<children>
+
+
+<AnchorPane prefHeight="200.0" prefWidth="280.0" style="-fx-background-color:#4D394B;">
+   
+   
+        <Circle radius="100.0" stroke="#67d74c" strokeType="INSIDE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+		<effect>
+                  <DropShadow color="#d0cbcb" height="56.77" radius="25.94" width="48.99" />
+               </effect>
+		</Circle>
+		
+      <ImageView fx:id="imgViewLst" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="round-image-view-circle" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      </ImageView>
+      
+        
+</AnchorPane>	
+
+<!--#63515c  -->
+ 
+<AnchorPane prefWidth="280.0" style="-fx-background-color:#564054;">
+   
+        <Circle fx:id="availableLst" layoutX="300.0" layoutY="180.0" radius="8.0" stroke="#67d74c" strokeType="INSIDE" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="14.0">
+		</Circle>
+		
+		<Label alignment="CENTER" layoutX="105.0" layoutY="9.0" text=" 유형욱" textFill="#FFFFFF" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="9.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+		</Label>
+		
+		
+</AnchorPane>
+
+	
+	<JFXListView fx:id="list1" layoutX="0" layoutY="50" styleClass="custom-jfx-list-view" VBox.vgrow="ALWAYS">
+			
+			
+				
+			<JFXListView fx:id="subList" styleClass="sublist">
+				<groupnode>
+					<Label styleClass="sub-label"> CHANNELS 
+					<graphic>
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+						<Icon awesomeIcon="COMMENTS" size="1.0em" style=";" styleClass="icon-custom-star" />
+					</StackPane>
+				</graphic>
+				</Label>
+				</groupnode>
+				<Label> #GSoc 
+				<graphic>
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+						<Icon awesomeIcon="COMMENTS" size="1.0em" style=";" styleClass="icon-custom-star" />
+					</StackPane>
+				</graphic>
+				</Label>
+				
+				<Label>     #Conversations
+				<graphic>
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+						<Icon awesomeIcon="COMMENTS" size="1.0em" style=";" styleClass="icon-custom-star" />
+					</StackPane>
+				</graphic>
+				
+				</Label>
+				
+				
+			</JFXListView>
+			
+			
+			
+			<JFXListView fx:id="subList2" styleClass="sublist">
+				<groupnode>
+					<Label styleClass="sub-label"> DIRECT MESSAGES 
+					<graphic>
+					
+					<AnchorPane>
+					
+					<StackPane styleClass="custom-jfx-list-view-icon-container" AnchorPane.leftAnchor="0.0">
+					<Icon awesomeIcon="LOCK" size="1.0em" style=";" styleClass="icon-custom-star" textFill="#fdd835" />
+							
+					</StackPane>
+					
+					
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+					<Icon awesomeIcon="LOCK" size="1.0em" style=";" styleClass="icon-custom-star" textFill="#fdd835" />
+							
+					</StackPane>
+					
+					</AnchorPane>
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+					<Icon awesomeIcon="LOCK" size="1.0em" style=";" styleClass="icon-custom-star" textFill="#fdd835" />
+							
+					</StackPane>
+				</graphic>
+				</Label>
+				</groupnode>
+				<Label> #유형욱  
+				<graphic>
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+						<Icon awesomeIcon="HEART" size="1.0em" style=";" styleClass="icon-custom-star" />
+					</StackPane>
+				</graphic>
+				</Label>
+				
+				<Label>     #user1
+				<graphic>
+					<StackPane styleClass="custom-jfx-list-view-icon-container">
+						<Icon awesomeIcon="CIRCLE" size="1.0em" style=";" styleClass="icon-custom-star" />
+					</StackPane>
+				</graphic>
+				
+				</Label>
+				
+				
+			</JFXListView>
+			
+			
+			<!-- <Label>Channel #3</Label>
+			<Label>Channel #4</Label> -->
+			<!-- <Label>Channel #5</Label> -->
+			<!-- <JFXListView fx:id="subList1" styleClass="sublist">
+				<groupnode>
+					<Label styleClass="sub-label"> Channel #6 </Label>
+				</groupnode>
+				<Label> Group #6.1 </Label>
+				<Label> Group #6.2 </Label>
+			</JFXListView>
+			<Label>Channel #7</Label> -->
+			<!-- <Label>Channel #8</Label> -->
+			<!-- <Label>Channel #9</Label> -->
+		</JFXListView>
+		
+		
+		
+		<AnchorPane prefWidth="280.0" style="-fx-background-color:#7E637C;">
+		<JFXButton buttonType="RAISED" prefHeight="40" styleClass="custom-jfx-button-raised" text="ADD CHANNEL" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+		
+		</AnchorPane>
+		
+		
+		
+		
+</children>
+</VBox>
+       
+</StackPane>

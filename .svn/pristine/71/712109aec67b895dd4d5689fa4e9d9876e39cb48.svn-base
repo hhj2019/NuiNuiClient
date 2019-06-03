@@ -1,0 +1,240 @@
+package kr.or.ddit.nn.view.download;
+
+import com.gluonhq.charm.glisten.control.ProgressBar;
+
+import java.io.File;
+import java.net.URL;
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
+import kr.or.ddit.nn.main.Session;
+import kr.or.ddit.nn.service.music.BuyMusicHistoryService;
+import kr.or.ddit.nn.service.music.musicService;
+import kr.or.ddit.nn.service.ticket.MyTicketService;
+import kr.or.ddit.nn.vo.music.BuyMusicHistoryVO;
+import kr.or.ddit.nn.vo.music.musicVO;
+import kr.or.ddit.nn.vo.ticket.MyTicketVO;
+import util.Server;
+
+public class DownloadFileController implements Initializable {
+	
+	public Stage rootStage;
+	
+	public DownloadFileController(Stage rootStage) {
+		this.rootStage = rootStage;
+	}
+	
+	private String savePath;
+
+	@FXML
+	private Pane rootPane;
+
+	@FXML
+	private VBox contentPane;
+
+	@FXML
+	private HBox bottomPane;
+	
+	@FXML
+	private Label title_info;
+
+	@FXML
+	private Label label_info;
+
+	@FXML
+	private Label txt_urlInfo;
+
+	@FXML
+	private JFXButton btn_open;
+
+	@FXML
+	private JFXTextArea txtarea_filelist;
+
+	@FXML
+	private Button btn_download;
+
+	@FXML
+	private ProgressBar pro_bar;
+
+	public List<String> sampleFileList = new ArrayList<>();
+	public int musicId;
+	public int ticktId;
+	public List<MyTicketVO> sampleTicketInfo;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		StringBuilder fieldContent = new StringBuilder("");
+		
+		musicService musicServiced = null;
+		try {
+			musicServiced = (musicService) Server.reg.lookup("musicService");
+		} catch (AccessException e1) {
+			e1.printStackTrace();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		} catch (NotBoundException e1) {
+			e1.printStackTrace();
+		}
+		
+		musicVO music = null;
+		try {
+			music = musicServiced.selectMusic(musicId);
+			sampleFileList.add(music.getMusic_file());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+
+		txtarea_filelist.setText(music.getMusic_name());
+//		label_info.setText("다운로드 가능: " + total + "개");
+//		title_info.setText("다운로드 정보");
+		label_info.setText("다운로드 곡 수: 1개");
+		txt_urlInfo.setText("c:\\");
+		savePath = "c:\\";
+
+		ProgressIndicator progressIndicator = new ProgressIndicator(0);
+
+		Label statusLabel = new Label();
+		statusLabel.setMinWidth(250);
+		statusLabel.setTextFill(Color.BLUE);
+
+		// 저장할 폴더 선택
+		pro_bar.setProgress(0);
+		pro_bar.setStyle("-fx-color: rgba(140,0,140,0.2);");
+
+		btn_open.setOnAction(evt -> {
+
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File selDir = directoryChooser.showDialog(rootStage);
+
+			if (selDir != null) {
+				System.out.println("Directory: " + selDir);
+				savePath = selDir.toString();
+
+				txt_urlInfo.setText(savePath);
+
+			}
+		});
+
+		btn_download.setOnAction(evt -> {
+			if(sampleTicketInfo != null)
+				updateTicket();
+			updateMusicDownload();
+			btn_download.setText("...loading...");
+			btn_download.setDisable(true);
+
+			DownTask downTask = new DownTask(sampleFileList);
+
+			System.out.println(savePath);
+
+			try {
+				downTask.setPath(savePath);
+			} catch (NotBoundException e1) {
+				e1.printStackTrace();
+			}
+
+			pro_bar.progressProperty().unbind();
+			pro_bar.progressProperty().bind(downTask.progressProperty());
+
+			progressIndicator.progressProperty().unbind();
+			progressIndicator.progressProperty().bind(downTask.progressProperty());
+
+			statusLabel.textProperty().unbind();
+			statusLabel.textProperty().bind(downTask.messageProperty());
+
+			downTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+
+				@Override
+				public void handle(WorkerStateEvent event) {
+					List<File> copied = downTask.getValue();
+					statusLabel.textProperty().unbind();
+					statusLabel.setText("완료: " + copied.size());
+					btn_download.setText("완료: " + copied.size());
+				}
+			});
+
+			new Thread(downTask).start();
+
+		});
+
+	}
+
+	private void updateMusicDownload() {
+		BuyMusicHistoryService buyHistoryService = null;
+		try {
+			buyHistoryService = (BuyMusicHistoryService) Server.reg.lookup("buyMusicHistory");
+		} catch (AccessException e1) {
+			e1.printStackTrace();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		} catch (NotBoundException e1) {
+			e1.printStackTrace();
+		}
+		BuyMusicHistoryVO buyVO = null;
+		buyVO.setMem_id(Session.getUser().getMem_id());
+		buyVO.setMusic_id(musicId);
+		
+		try {
+			buyHistoryService.insertHistory(buyVO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private void updateTicket() {
+		MyTicketService myTicketService = null;
+		try {
+			myTicketService = (MyTicketService) Server.reg.lookup("myTicketService");
+		} catch (AccessException e1) {
+			e1.printStackTrace();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		} catch (NotBoundException e1) {
+			e1.printStackTrace();
+		}
+		
+		int downloadCnt = sampleFileList.size();
+		for(MyTicketVO item : sampleTicketInfo) {
+			int ticketCount = item.getTicket_download_count();
+			if(downloadCnt >= ticketCount) {
+				downloadCnt -= item.getTicket_download_count();				
+				try {
+					myTicketService.deleteMyTicket(item.getMy_ticket_id());
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				}
+			}else {
+				item.setTicket_download_count(ticketCount-downloadCnt);
+				try {
+					myTicketService.updateDownCount(item);
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
+		
+	}
+
+}

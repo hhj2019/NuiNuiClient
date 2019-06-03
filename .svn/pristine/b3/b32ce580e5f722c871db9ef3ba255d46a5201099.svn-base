@@ -1,0 +1,40 @@
+package kr.or.ddit.nn.view.chart;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import kr.or.ddit.nn.vo.like.LikeVO;
+
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.Pagination;
+
+public class Chart_Like_Controller implements Initializable {
+
+	
+	@FXML BorderPane main_pane;
+	@FXML Pane center_pane;
+	@FXML JFXButton close_btn;
+	@FXML TableView<LikeVO> playlist_table;
+	@FXML TableColumn<LikeVO, Integer> music_id_col;
+	@FXML TableColumn<LikeVO, String> music_name_col;
+	@FXML TableColumn<LikeVO, String> artist_name_col;
+	@FXML TableColumn<LikeVO, String> music_playtime_col;
+	@FXML TableColumn<LikeVO, String> album_name_col;
+	@FXML Pagination pge;
+	@FXML JFXButton cancel_btn;
+	
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,163 @@
+package kr.or.ddit.nn.view.manager.music.artist;
+
+import java.io.IOException;
+import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import kr.or.ddit.nn.service.artist.artistService;
+import kr.or.ddit.nn.vo.artist.artistVO;
+import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import com.jfoenix.controls.JFXButton;
+
+public class Manager_artist_Controller implements Initializable{
+
+	@FXML BorderPane center_music_pane;
+	@FXML Pane artist_pane;
+	@FXML TableView<artistVO> artist_table;
+	@FXML TableColumn<artistVO, Integer> artist_id_col;
+	@FXML TableColumn<artistVO, String> artist_name_col;
+	@FXML TableColumn<artistVO, String> artist_type_col;
+	@FXML TableColumn<artistVO, String> artist_debut_col;
+	@FXML TableColumn<artistVO, String> artist_country_col;
+	@FXML TableColumn<artistVO, String> artist_enter_col;
+	@FXML JFXButton artist_insert_btn;
+	@FXML JFXButton artist_update_btn;
+	@FXML JFXButton artist_delete_btn;
+	@FXML JFXButton music_btn;
+	@FXML JFXButton album_btn;
+	@FXML JFXButton artist_btn;
+	private Registry reg;
+	private artistService as;
+	private ObservableList<artistVO> aList;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			as = (artistService) reg.lookup("artistService");
+		}catch (RemoteException e2) {
+			e2.printStackTrace();
+		}catch (NotBoundException e2) {
+			e2.printStackTrace();
+		}
+		
+		artist_name_col.setCellValueFactory(new PropertyValueFactory<>("artist_name"));
+		artist_type_col.setCellValueFactory(new PropertyValueFactory<>("artist_type"));
+		artist_enter_col.setCellValueFactory(new PropertyValueFactory<>("artist_enter"));
+		artist_country_col.setCellValueFactory(new PropertyValueFactory<>("artist_country"));
+		artist_debut_col.setCellValueFactory(new PropertyValueFactory<>("artist_debut"));
+		aList = FXCollections.observableArrayList();
+		
+		try {
+			aList.setAll(as.selectAllArtist());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		artist_table.setItems(aList);
+		
+		
+		artist_update_btn.setOnAction(e->{
+			update_artist_controller.country = artist_table.getSelectionModel().getSelectedItem().getArtist_country();
+			update_artist_controller.name = artist_table.getSelectionModel().getSelectedItem().getArtist_name();
+			update_artist_controller.enter = artist_table.getSelectionModel().getSelectedItem().getArtist_enter();
+			update_artist_controller.debut = artist_table.getSelectionModel().getSelectedItem().getArtist_debut();
+			update_artist_controller.type = artist_table.getSelectionModel().getSelectedItem().getArtist_type();
+			update_artist_controller.id = artist_table.getSelectionModel().getSelectedItem().getArtist_id();
+			changeScene("update_artist.fxml");
+		});
+		artist_insert_btn.setOnAction(e->{
+			changeScene("isnert_artist.fxml");
+		});
+		artist_delete_btn.setOnAction(e->{
+			artistVO av = new artistVO();
+			av.setArtist_id(artist_table.getSelectionModel().getSelectedItem().getArtist_id());
+			try {
+				if(as.deleteArtist(av)>0) {
+					OKMsg("삭제 성공", "아티스트를 삭제했습니다.");
+				}else {
+					errMsg("삭제 실패", "아티스트 삭제를 실패했습니다.\n아티스트의 노래를 먼저 삭제하세요.");
+					return;
+				}
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			}
+			changeScene("Manager_artist.fxml");
+		});
+		
+		
+		artist_btn.setOnAction(e->{
+			changeScene("Manager_artist.fxml");
+		});
+		music_btn.setOnAction(e->{
+			changeScene("../music/manager_music.fxml");
+		});
+		album_btn.setOnAction(e->{
+			changeScene("../album/manager_album.fxml");
+		});
+	}
+	
+	/**
+	 * 센터 화면 변경
+	 * 
+	 * @param fxmlURL
+	 * @return
+	 */
+	public FXMLLoader changeScene(String fxmlURL) {
+		center_music_pane.setCenter(artist_pane);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlURL));
+		Parent parent = null;
+		try {
+			parent = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		center_music_pane.setCenter(parent);
+		return loader;
+	}
+	
+	/**
+	 * 에러메세지 출력
+	 * 
+	 * @param headerText
+	 * @param msg
+	 */
+	public void errMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("오류");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+	/**
+	 * 완료메세지 출력
+	 * 
+	 * @param headerText
+	 * @param msg
+	 */
+	public void OKMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.INFORMATION);
+		errAlert.setTitle("성공");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+}

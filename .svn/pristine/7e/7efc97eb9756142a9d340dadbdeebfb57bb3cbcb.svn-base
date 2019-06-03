@@ -1,0 +1,45 @@
+package kr.or.ddit.nn.view.mypage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import kr.or.ddit.nn.vo.like.LikeVO;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+
+public class My_Like_Controller implements Initializable{
+
+	@FXML JFXButton top100_strim_btn;
+	@FXML ImageView top100_strim_img;
+	@FXML Pane like_pane;
+	@FXML JFXButton strim_btn;
+	@FXML ImageView strim_img;
+	@FXML JFXButton putcart_btn;
+	@FXML ImageView putcart_img;
+	@FXML JFXButton down_btn;
+	@FXML ImageView down_img;
+	@FXML TableView<LikeVO> like_table;
+	@FXML TableColumn chart_no_col;
+	@FXML TableColumn album_img_col;
+	@FXML TableColumn song_info_col;
+	@FXML TableColumn album_name_col;
+	@FXML TableColumn like_col;
+	@FXML TableColumn strim_col;
+	@FXML TableColumn putcart_col;
+	@FXML TableColumn down_col;
+	@FXML JFXButton playlist_btn;
+	@FXML JFXButton notice_btn;
+	@FXML JFXButton like_btn;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

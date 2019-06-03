@@ -1,0 +1,71 @@
+package kr.or.ddit.nn.vo.like;
+
+import java.io.Serializable;
+
+public class LikeVO implements Serializable {
+	private int like_id;
+	private String mem_id;
+	private int album_id;
+	private int artist_id;
+	private int music_id;
+	private int mv_id;
+
+	public int getLike_id() {
+		return like_id;
+	}
+
+	public void setLike_id(int like_id) {
+		this.like_id = like_id;
+	}
+
+	public String getMem_id() {
+		return mem_id;
+	}
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+
+	public int getAlbum_id() {
+		return album_id;
+	}
+
+	public void setAlbum_id(int album_id) {
+		this.album_id = album_id;
+	}
+
+	public int getArtist_id() {
+		return artist_id;
+	}
+
+	public void setArtist_id(int artist_id) {
+		this.artist_id = artist_id;
+	}
+
+	public int getMusic_id() {
+		return music_id;
+	}
+
+	public void setMusic_id(int music_id) {
+		this.music_id = music_id;
+	}
+
+	public int getMv_id() {
+		return mv_id;
+	}
+
+	public void setMv_id(int mv_id) {
+		this.mv_id = mv_id;
+	}
+
+}
+// 엔티티 타입명 LIKE 작성일 2019-05-14
+// 테이블명 LIKE 작성자 유형욱
+// 테이블 설명 좋아요
+// 번호 속성명 컬럼명 도메인 데이터 타입 Not Null 기본값 KEY
+// 1 ID like_id N/A NUMBER Y pk
+// 2 회원ID(FK) mem_id N/A VARCHAR2(30) Y
+// 3 앨범ID(FK) album_id N/A NUMBER N
+// 4 아티스트ID(FK) artist_id N/A NUMBER N
+// 5 음악ID(FK) music_id N/A NUMBER N
+// 6 뮤직비디오ID(FK) mv_id N/A NUMBER N

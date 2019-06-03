@@ -1,0 +1,36 @@
+package kr.or.ddit.nn.view.chart;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
+import kr.or.ddit.nn.main.MainController;
+import javafx.scene.control.TableColumn;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.image.ImageView;
+
+public class chart_genre_controller implements Initializable{
+
+	@FXML BorderPane Main_pane;
+	@FXML TableColumn music_rank;
+	@FXML TableColumn music_img;
+	@FXML TableColumn music_name;
+	@FXML TableColumn music_artist;
+	@FXML TableColumn album_name;
+	@FXML JFXButton top100_btn;
+	@FXML ImageView top100_img;
+	@FXML JFXButton listen_btn;
+	@FXML ImageView listen_img;
+	@FXML JFXButton cart_btn;
+	@FXML ImageView cart_img;
+	@FXML JFXButton down_btn;
+	@FXML ImageView down_img;
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		MainController.albumArt(music_img);
+	}
+	
+}

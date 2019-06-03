@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2c344b;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.login.LoginController">
+	<children>
+		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #2c344b;">
+			<children>
+				<AnchorPane layoutY="452.0" prefHeight="48.0" prefWidth="350.0" style="-fx-background-color: rgb(140,0,140);">
+					<children>
+						<Label fx:id="btn_login" alignment="CENTER" layoutY="4.0" onMouseClicked="#login" prefHeight="40.0" prefWidth="350.0" text="로그인" textFill="#fefefe">
+							<font>
+								<Font size="17.0" />
+							</font>
+						</Label>
+					</children>
+				</AnchorPane>
+				<AnchorPane prefHeight="48.0" prefWidth="350.0" style="-fx-background-color: #262b40;">
+					<children>
+						<Label layoutX="129.0" layoutY="15.0" text="NuiNuiMusic" textFill="#8c90b3">
+							<font>
+								<Font size="15.0" />
+							</font>
+						</Label>
+						<Circle fx:id="close" fill="#fa4771" layoutX="16.0" layoutY="24.0" onMouseClicked="#closeclick" radius="5.0" stroke="#fa4771" strokeType="INSIDE" />
+						<Circle fx:id="min" fill="#ffc965" layoutX="30.0" layoutY="24.0" onMouseClicked="#minclick" radius="5.0" stroke="#ffc965" strokeType="INSIDE" />
+						<Circle fill="#42cf9b" layoutX="45.0" layoutY="24.0" radius="5.0" stroke="#42cf9b" strokeType="INSIDE" />
+					</children>
+				</AnchorPane>
+				<AnchorPane layoutX="35.0" layoutY="225.0" prefHeight="50.0" prefWidth="280.0" style="-fx-border-color: #8c90b3; -fx-border-radius: 2;">
+					<children>
+						<JFXTextField fx:id="input_id" layoutX="15.0" layoutY="5.0" prefHeight="40.0" prefWidth="250.0" promptText="  아이디를 입력하세요." style="-fx-background-color: #8c90b3;" />
+					</children>
+				</AnchorPane>
+				<AnchorPane layoutX="36.0" layoutY="290.0" prefHeight="50.0" prefWidth="280.0" style="-fx-border-color: #8c90b3; -fx-border-radius: 2;">
+					<children>
+                  <JFXPasswordField fx:id="input_pass" layoutX="15.0" layoutY="5.0" prefHeight="40.0" prefWidth="250.0" promptText="  비밀번호를 입력하세요." style="-fx-background-color: #8c90b3;" />
+					</children>
+				</AnchorPane>
+      				<ImageView fx:id="ic" fitHeight="107.0" fitWidth="140.0" layoutX="122.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      					<image>
+      						<Image url="@icon.png" />
+      					</image>
+      				</ImageView>
+      				<Label fx:id="btn_signup" alignment="CENTER" layoutX="17.0" layoutY="351.0" onMouseClicked="#signup" prefHeight="40.0" prefWidth="150.0" text="회원가입하기" textFill="#9197e1">
+               <font>
+                  <Font size="13.0" />
+               </font>
+      				</Label>
+            <AnchorPane layoutY="404.0" prefHeight="48.0" prefWidth="350.0" style="-fx-background-color: yellow;">
+               <children>
+                  <Label fx:id="btn_kakao" alignment="CENTER" layoutY="4.0" onMouseClicked="#kakaoLogin" prefHeight="40.0" prefWidth="350.0" text="카카오 로그인">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label fx:id="btn_searchPass" alignment="CENTER" layoutX="184.0" layoutY="351.0" onMouseClicked="#searchPass" prefHeight="40.0" prefWidth="150.0" text="비밀번호 찾기" textFill="#9197e1">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="157.0" layoutY="340.0" prefHeight="50.0" prefWidth="36.0" text="|" textFill="#9197e1">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Label>
+			</children>
+		</AnchorPane>
+		
+	</children>
+</AnchorPane>

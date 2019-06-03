@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.myInfo.MyInfo_TicketHistoryController">
+   <center>
+      <Pane fx:id="cneter_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="ticket_table" layoutX="33.0" layoutY="33.0" prefHeight="407.0" prefWidth="684.0" style="-fx-fixed-cell-size: 32.5;" stylesheets="@../../../../../../../css/tableview.css">
+               <columns>
+                  <TableColumn fx:id="ticket_id" prefWidth="70.0" text="NO" />
+                  <TableColumn fx:id="ticket_name" prefWidth="420.0" text="내용" />
+                  <TableColumn fx:id="ticket_date" prefWidth="189.0" text="구입일" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

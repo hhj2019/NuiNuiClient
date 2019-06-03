@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.myInfo.MyInfo_GradeController">
+   <center>
+      <Pane fx:id="cneter_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="475.0" prefWidth="750.0" spacing="30.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                     <children>
+                        <ImageView fx:id="imgBox" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           
+                        </ImageView>
+                        <Label fx:id="memGrade" alignment="BOTTOM_CENTER" text="text">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="424.0">
+                     <children>
+                        <Label fx:id="memId11" alignment="CENTER" contentDisplay="CENTER" prefHeight="151.0" prefWidth="424.0" text="등급설명" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VIP : 5년 정기구독" textAlignment="CENTER" wrappingWidth="360.7109375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GOLD : 3년 정기구독" textAlignment="CENTER" wrappingWidth="360.7109375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GREEN : 1년 정기구독" textAlignment="CENTER" wrappingWidth="360.7109375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUI*2 : 이용권 없음" textAlignment="CENTER" wrappingWidth="360.7109375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

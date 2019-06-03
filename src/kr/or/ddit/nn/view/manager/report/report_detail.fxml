@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.report.Report_detail_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Line endX="568.0" layoutX="149.0" layoutY="30.0" startX="-116.0" />
+            <Line endX="568.0" layoutX="148.0" layoutY="431.0" startX="-116.0" />
+            <Line endX="568.0" layoutX="148.0" layoutY="85.0" startX="-116.0" />
+            <JFXTextField fx:id="report_title" focusColor="#f0f0f0" layoutX="52.0" layoutY="43.0" prefHeight="30.0" prefWidth="400.0" unFocusColor="#4d4d4d00" />
+            <Label layoutX="484.0" layoutY="51.0" text="작성일">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="report_date" focusColor="#f0f0f0" layoutX="531.0" layoutY="43.0" prefHeight="30.0" prefWidth="160.0" unFocusColor="#4d4d4d00" />
+            <JFXTextArea fx:id="report_content" focusColor="#f0f0f0" layoutX="116.0" layoutY="153.0" prefHeight="265.0" prefWidth="576.0" unFocusColor="#4d4d4d00" />
+            <Label layoutX="52.0" layoutY="105.0" text="작성자">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="report_memid" focusColor="#f0f0f0" layoutX="114.0" layoutY="97.0" prefHeight="30.0" prefWidth="131.0" unFocusColor="#4d4d4d00" />
+            <Label layoutX="284.0" layoutY="105.0" text="카테고리">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="report_category" focusColor="#f0f0f0" layoutX="347.0" layoutY="97.0" prefHeight="30.0" prefWidth="137.0" unFocusColor="#4d4d4d00" />
+            <Label layoutX="59.0" layoutY="155.0" text="내용">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Line endX="568.0" layoutX="149.0" layoutY="137.0" startX="-116.0" />
+            <JFXButton fx:id="ing_btn" layoutX="459.0" layoutY="455.0" prefHeight="30.0" prefWidth="50.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="확인">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="217.0" layoutY="461.0" text="진행상황 :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="526.0" layoutY="105.0" text="진행상황">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="report_ing" focusColor="#f0f0f0" layoutX="589.0" layoutY="97.0" prefHeight="30.0" prefWidth="103.0" unFocusColor="#4d4d4d00" />
+            <ComboBox fx:id="combo_box" layoutX="299.0" layoutY="455.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: rgb(240,240,240); -fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.Manager_Controller">
+   <top>
+      <Pane fx:id="manager_top" prefHeight="93.0" prefWidth="900.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="main_logo" fitHeight="60.0" fitWidth="60.0" layoutX="364.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@NuiNuiLoge.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="main_title" fitHeight="120.0" fitWidth="120.0" layoutX="416.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@NuiNuiName.jpg" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="login_btn" layoutX="84.0" layoutY="19.0" ripplerFill="TRANSPARENT" style="-fx-background-color: white;" text="매니저">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <Circle fx:id="login_img" fill="black" layoutX="53.0" layoutY="47.0" radius="20.0" stroke="black" strokeType="INSIDE" />
+            <Button fx:id="logout_btn" layoutX="90.0" layoutY="52.0" mnemonicParsing="false" style="-fx-background-color: white;" text="logout" />
+            <Line endX="-30.0" layoutX="181.0" layoutY="48.0" startX="-100.0" />
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane fx:id="manager_main" prefHeight="658.0" prefWidth="969.0" style="-fx-background-color: rgb(240,240,240)4;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="33.0" layoutY="41.0" prefHeight="210.0" prefWidth="684.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 5;">
+               <children>
+                  <JFXButton fx:id="Main_notice_btn" layoutX="10.0" layoutY="5.0" text="공지사항">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Line endX="582.0" layoutX="101.0" layoutY="39.0" startX="-100.0" />
+                  <TableView fx:id="notice_table" layoutX="14.0" layoutY="47.0" prefHeight="153.0" prefWidth="657.0" style="-fx-fixed-cell-size: 42;">
+                    <columns>
+                      <TableColumn fx:id="notice_id" prefWidth="75.0" text="NO" />
+                      <TableColumn fx:id="notice_title" prefWidth="397.0" text="제목" />
+                        <TableColumn fx:id="notice_date" prefWidth="183.0" text="작성일" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane layoutX="33.0" layoutY="264.0" prefHeight="210.0" prefWidth="684.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 5;">
+               <children>
+                  <JFXButton fx:id="Main_report_btn" layoutX="10.0" layoutY="5.0" text="신고">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Line endX="582.0" layoutX="101.0" layoutY="39.0" startX="-100.0" />
+                  <TableView fx:id="report_table" layoutX="14.0" layoutY="47.0" prefHeight="153.0" prefWidth="657.0" style="-fx-fixed-cell-size: 42;">
+                     <columns>
+                        <TableColumn fx:id="report_id" prefWidth="75.0" text="NO" />
+                        <TableColumn fx:id="report_title" prefWidth="397.0" text="제목" />
+                        <TableColumn fx:id="report_date" prefWidth="183.0" text="작성일" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <Pane prefHeight="500.0" prefWidth="150.0" style="-fx-background-color: rgb(140,0,140);" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="music_btn" alignment="BASELINE_LEFT" layoutY="50.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="음원" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="music_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="ticket_btn" alignment="BASELINE_LEFT" layoutY="110.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="이용권" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="ticket_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="notice_btn" alignment="BASELINE_LEFT" layoutY="170.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="공지사항" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="notice_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="FAQ_btn" alignment="BASELINE_LEFT" layoutY="230.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="자주묻는질문" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="FAQ_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="event_btn" alignment="BASELINE_LEFT" layoutY="290.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="이벤트" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="event_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="QnA_btn" alignment="BASELINE_LEFT" layoutY="350.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="Q&amp;A" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="QnA_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="report_btn" alignment="BASELINE_LEFT" layoutY="410.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0);" text="신고" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="report_img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

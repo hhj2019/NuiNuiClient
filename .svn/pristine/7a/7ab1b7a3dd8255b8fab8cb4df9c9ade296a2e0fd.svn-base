@@ -1,0 +1,271 @@
+package kr.or.ddit.nn.view.manager.music.music;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Callback;
+import kr.or.ddit.nn.main.ClientMain;
+import kr.or.ddit.nn.main.MainController;
+import kr.or.ddit.nn.service.music.musicService;
+import kr.or.ddit.nn.vo.album.albumVO;
+import kr.or.ddit.nn.vo.music.viewMusicVO;
+import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.TableCell;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.sql.Timestamp;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+
+public class manager_music_controller implements Initializable{
+
+	@FXML private BorderPane center_music_pane;
+	@FXML private Pane music_pane;
+	@FXML private TableView<viewMusicVO> music_table;
+	@FXML private TableColumn<viewMusicVO, Integer> music_no_col;
+	@FXML private TableColumn<viewMusicVO, ImageView> album_img_col;
+	@FXML private TableColumn<viewMusicVO, String> music_name_col;
+	@FXML private TableColumn<viewMusicVO, Timestamp> music_time_col;
+	@FXML private TableColumn<viewMusicVO, String> artist_col;
+	@FXML private TableColumn<viewMusicVO, String> album_name_col;
+	@FXML private TableColumn<viewMusicVO, String> lyrics_col;
+	@FXML private TableColumn<viewMusicVO, String> ganre_col;
+	@FXML private Pagination music_pagination;
+	@FXML private JFXButton insert_music;
+	@FXML private JFXButton update_music;
+	@FXML private JFXButton delete_music;
+	@FXML private JFXButton music_btn;
+	@FXML private JFXButton album_btn;
+	@FXML private JFXButton artist_btn;
+	
+	private musicService ms;
+	private Registry reg;
+	public static Stage dialog;
+	public static String lyric;
+
+//	private int from, to, itemsForPage;
+//	private ObservableList<viewMusicVO> currentPageDate;
+	private ObservableList<viewMusicVO> vmList;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ms = (musicService) reg.lookup("musicService");
+		}catch (RemoteException e2) {
+			e2.printStackTrace();
+		}catch (NotBoundException e2) {
+			e2.printStackTrace();
+		}
+		
+		lyrics_col.setCellFactory(new Callback<TableColumn<viewMusicVO, String>,TableCell<viewMusicVO, String>>(){        
+			@Override
+			public TableCell<viewMusicVO, String> call(TableColumn<viewMusicVO, String> param) {                
+				TableCell<viewMusicVO, String> cell = new TableCell<viewMusicVO, String>(){
+					@Override
+					public void updateItem(String item, boolean empty) {                        
+						if(item!=null){                            
+							HBox box= new HBox();
+							box.setSpacing(5) ;
+							box.setAlignment(Pos.TOP_CENTER);
+							
+							ImageView imageview = new ImageView();
+							imageview.setFitHeight(20);
+							imageview.setFitWidth(20);
+							imageview.setImage(new Image(new File("img\\가사.png").toURI().toString())); 
+							imageview.setOnMouseClicked(e->{
+								lyric = music_table.getSelectionModel().getSelectedItem().getMusic_lyrics();
+								
+								dialog = new Stage(StageStyle.UTILITY);
+								
+								// 3. 부모창 지정
+								dialog.initOwner(ClientMain.pStage);
+								
+								dialog.setTitle("노래 가사");
+								
+								Parent parent = null;
+								try {
+									parent = FXMLLoader.load(getClass().getResource("lyric.fxml"));
+								} catch (IOException e1) {
+									e1.printStackTrace();
+								}
+								// 5. Scene객체 생성해서 컨테이너 객체 추가
+								Scene scene = new Scene(parent);
+								
+								// 6. Stage객체에 Scene객체 추가
+								dialog.setScene(scene);
+								dialog.setResizable(false);
+								dialog.show();
+							});
+							box.getChildren().addAll(imageview);
+							
+							//SETTING ALL THE GRAPHICS COMPONENT FOR CELL
+							setGraphic(box);
+						}
+					}
+				};
+				return cell;
+			}
+			
+		});
+		
+		music_name_col.setCellValueFactory(new PropertyValueFactory<>("music_name"));
+		music_time_col.setCellValueFactory(new PropertyValueFactory<>("music_playtime"));
+		lyrics_col.setCellValueFactory(new PropertyValueFactory<>("music_lyrics"));
+		
+		artist_col.setCellValueFactory(new PropertyValueFactory<>("artist_name"));
+		album_img_col.setCellValueFactory(new PropertyValueFactory<>("album_img"));
+		
+		vmList = FXCollections.observableArrayList();
+		try {
+			vmList.setAll(ms.selectViewMusic());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		MainController.albumArt(album_img_col);
+		
+		music_table.setItems(vmList);
+		
+//		itemsForPage = 10;	//한페이지에 보여줄 항목 수 설정
+//		
+//		int totItemCnt = vmList.size();
+//		int totPageCnt = totItemCnt%itemsForPage == 0 ? totItemCnt / itemsForPage : totItemCnt / itemsForPage + 1;
+//		music_pagination.setPageCount(totPageCnt);	//전체 페이지 수 설정
+//		
+//		music_pagination.setPageFactory(new Callback<Integer, Node>() {
+//
+//			@Override
+//			public Node call(Integer param) {
+//				from = param * itemsForPage;
+//				to = from + itemsForPage - 1;
+//				music_table.setItems(getTableViewDate(from, to));
+//				
+//				return music_table;
+//			}
+//		});
+		
+		insert_music.setOnAction(e->{
+			changeScene("insert_music.fxml");
+		});
+		update_music.setOnAction(e->{
+			update_music_controller.music_name = music_table.getSelectionModel().getSelectedItem().getMusic_name();
+			update_music_controller.music_artist = music_table.getSelectionModel().getSelectedItem().getArtist_name();
+			update_music_controller.music_genre = music_table.getSelectionModel().getSelectedItem().getArtist_name();
+			update_music_controller.music_lyrics = music_table.getSelectionModel().getSelectedItem().getMusic_lyrics();
+			update_music_controller.music_album = music_table.getSelectionModel().getSelectedItem().getAlbum_name();
+			update_music_controller.music_id = music_table.getSelectionModel().getSelectedItem().getMusic_id();
+			changeScene("update_music.fxml");
+		});
+		delete_music.setOnAction(e->{
+			try {
+				if(ms.deleteMusic(music_table.getSelectionModel().getSelectedItem().getMusic_id())>0) {
+					OKMsg("삭제 완료", "노래를 삭제했습니다.");
+				}else {
+					errMsg("삭제 실패", "노래 삭제를 실패했습니다.");
+					return;
+				}
+				changeScene("manager_music.fxml");
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		artist_btn.setOnAction(e->{
+			changeScene("../artist/Manager_artist.fxml");
+		});
+		music_btn.setOnAction(e->{
+			changeScene("manager_music.fxml");
+		});
+		album_btn.setOnAction(e->{
+			changeScene("../album/manager_album.fxml");
+		});
+	}
+	
+	/**
+	 * 센터 화면 변경
+	 * 
+	 * @param fxmlURL
+	 * @return
+	 */
+	public FXMLLoader changeScene(String fxmlURL) {
+		center_music_pane.setCenter(music_pane);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlURL));
+		Parent parent = null;
+		try {
+			parent = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		center_music_pane.setCenter(parent);
+		return loader;
+	}
+	
+//	/**
+//	 * TableView에 채워줄 데이터를 가져오는 메서드
+//	 * @param from
+//	 * @param to
+//	 * @return
+//	 */
+//	private ObservableList<viewMusicVO> getTableViewDate(int from, int to) {
+//		currentPageDate = FXCollections.observableArrayList();	// 현재페이지 데이터 초기화
+//		int toSize = vmList.size();
+//		for(int i = from; i <= to && i < toSize; i++) {
+//			currentPageDate.add(vmList.get(i));
+//		}
+//		return currentPageDate;
+//	}
+	
+	/**
+	 * 에러메세지 출력
+	 * 
+	 * @param headerText
+	 * @param msg
+	 */
+	public void errMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("오류");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+	/**
+	 * 완료메세지 출력
+	 * 
+	 * @param headerText
+	 * @param msg
+	 */
+	public void OKMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.INFORMATION);
+		errAlert.setTitle("성공");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+	
+}

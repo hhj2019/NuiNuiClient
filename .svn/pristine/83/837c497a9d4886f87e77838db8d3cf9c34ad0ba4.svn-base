@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.event.event_controller">
+   <center>
+      <Pane fx:id="in_pane" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Pagination fx:id="event_pagination" layoutX="33.0" layoutY="39.0" prefHeight="440.0" prefWidth="684.0" />
+            <TableView fx:id="event_table" layoutX="33.0" layoutY="39.0" prefHeight="395.0" prefWidth="684.0" style="-fx-fixed-cell-size: 37;">
+              <columns>
+                <TableColumn fx:id="event_id" prefWidth="75.0" text="NO" />
+                <TableColumn fx:id="event_title" prefWidth="416.0" text="제목" />
+                  <TableColumn fx:id="event_eventdate" prefWidth="191.0" text="이벤트 기간" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

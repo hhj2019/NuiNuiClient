@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.music.album.update_album_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="343.0" layoutY="27.0" prefHeight="30.0" prefWidth="59.0" text="앨범 수정">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Line endX="298.0" layoutX="276.0" layoutY="69.0" startX="-100.0" stroke="#8c008c" />
+            <Label layoutX="247.0" layoutY="126.0" text="이름" />
+            <JFXTextField fx:id="album_name" layoutX="297.0" layoutY="121.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="247.0" layoutY="186.0" text="가수" />
+            <JFXButton fx:id="insert_btn" layoutX="263.0" layoutY="448.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="수정" />
+            <JFXButton fx:id="cencel_btn" layoutX="383.0" layoutY="448.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="취소" />
+            <JFXTextField fx:id="artist_name" layoutX="297.0" layoutY="181.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="album_date" layoutX="297.0" layoutY="241.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="241.0" layoutY="246.0" text="발매일" />
+            <JFXTextField fx:id="album_img" layoutX="297.0" layoutY="301.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="227.0" layoutY="306.0" text="앨범 이미지" />
+            <JFXButton fx:id="insert_img_btn" layoutX="535.0" layoutY="301.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="찾기" />
+            <JFXButton fx:id="insert_file" layoutX="297.0" layoutY="361.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="파일 찾기" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.CustomerService.report.CS_insert_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="report_ok_btn" layoutX="276.0" layoutY="412.0" onAction="#insert_report" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="확인" />
+            <JFXButton fx:id="report_cancel_btn" layoutX="399.0" layoutY="412.0" onAction="#cancel_report" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="취소" />
+            <Label layoutX="333.0" layoutY="30.0" prefHeight="30.0" prefWidth="85.0" text="신고하기 작성">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" layoutX="275.0" layoutY="69.0" startX="-100.0" stroke="#8c008c" />
+            <Label layoutX="240.0" layoutY="93.0" text="제목" />
+            <Label layoutX="228.0" layoutY="141.0" text="카테고리" />
+            <Label layoutX="240.0" layoutY="236.0" text="내용" />
+            <JFXRadioButton fx:id="noise_report" layoutX="292.0" layoutY="141.0" text="음원잡음신고" />
+            <JFXRadioButton fx:id="silent_report" layoutX="404.0" layoutY="141.0" text="음원무음신고" />
+            <JFXRadioButton fx:id="lyrics_report" layoutX="292.0" layoutY="168.0" text="음원가사신고" />
+            <JFXRadioButton fx:id="artist_report" layoutX="404.0" layoutY="168.0" text="아티스트정보신고" />
+            <JFXRadioButton fx:id="album_report" layoutX="292.0" layoutY="195.0" text="앨범정보신고" />
+            <JFXRadioButton fx:id="others_report" layoutX="404.0" layoutY="195.0" text="기타신고" />
+            <JFXTextField fx:id="report_title" focusColor="#8c008c" layoutX="290.0" layoutY="88.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <JFXTextArea fx:id="report_content" focusColor="#8c008c" layoutX="290.0" layoutY="236.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

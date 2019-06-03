@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.music.artist.update_artist_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="330.0" layoutY="26.0" prefHeight="30.0" prefWidth="85.0" text="아티스트 수정">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Line endX="298.0" layoutX="276.0" layoutY="69.0" startX="-100.0" stroke="#8c008c" />
+            <Label layoutX="253.0" layoutY="128.0" text="이름" />
+            <JFXTextField fx:id="artist_name" layoutX="303.0" layoutY="121.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="247.0" layoutY="186.0" text="소속사" />
+            <Label layoutX="247.0" layoutY="366.0" text="데뷔일" />
+            <JFXButton fx:id="insert_btn" layoutX="265.0" layoutY="446.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="수정" />
+            <JFXButton fx:id="cencel_btn" layoutX="385.0" layoutY="446.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="취소" />
+            <JFXTextField fx:id="artist_enter" layoutX="303.0" layoutY="181.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="artist_type" layoutX="303.0" layoutY="241.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="241.0" layoutY="246.0" text="활동유형" />
+            <JFXTextField fx:id="artist_country" layoutX="303.0" layoutY="301.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="253.0" layoutY="306.0" text="국적" />
+            <JFXTextField fx:id="artist_debut" layoutX="303.0" layoutY="361.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

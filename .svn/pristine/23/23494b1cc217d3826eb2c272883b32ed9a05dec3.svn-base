@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="ticket_item" alignment="CENTER" prefHeight="150.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FontAwesomeIconView fx:id="ticket_icon" glyphName="MUSIC" size="30" wrappingWidth="50.0">
+         <HBox.margin>
+            <Insets bottom="50.0" left="30.0" />
+         </HBox.margin>
+      </FontAwesomeIconView>
+      <VBox prefHeight="150.0" prefWidth="300.0">
+         <children>
+            <Label fx:id="ticket_name" prefHeight="19.0" prefWidth="299.0" text="ticket name">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="ticket_context" prefHeight="16.0" prefWidth="311.0" text="ticekt context">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label fx:id="ticket_price" prefHeight="15.0" prefWidth="170.0" text="price">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="ticket_buy_btn" contentDisplay="TOP" prefHeight="55.0" prefWidth="104.0" style="-fx-background-color: #F0E6F0;" text="buy" textFill="#8c008c">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <graphic>
+            <FontAwesomeIconView fill="#8c008c" glyphName="SHOPPING_CART" size="25" textAlignment="CENTER" />
+         </graphic>
+      </JFXButton>
+   </children>
+   <padding>
+      <Insets left="50.0" right="50.0" />
+   </padding>
+</HBox>

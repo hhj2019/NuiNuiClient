@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.myInfo.My_Playlist_Controller">
+   <center>
+      <Pane fx:id="cneter_pane" prefHeight="472.0" prefWidth="758.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Pagination fx:id="pga" layoutX="29.0" layoutY="73.0" prefHeight="367.0" prefWidth="691.0" stylesheets="@../../../../../../../css/tableview.css" />
+            <TableView fx:id="playlist_table" layoutX="29.0" layoutY="75.0" prefHeight="322.0" prefWidth="691.0" style="-fx-fixed-cell-size: 32.5;" stylesheets="@../../../../../../../css/tableview.css">
+               <columns>
+                  <TableColumn fx:id="playlist_no_col" prefWidth="50.0" text="NO" />
+                  <TableColumn fx:id="playlist_info_col" prefWidth="637.0" text="플레이리스트" />
+               </columns>
+            </TableView>
+            <JFXButton fx:id="info_playlist" layoutX="359.0" layoutY="30.0" prefHeight="30.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="플레이리스트확인" />
+            <JFXButton fx:id="insert_playlist" layoutX="482.0" layoutY="30.0" prefHeight="30.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="플레이리스트추가" />
+            <JFXButton fx:id="delete_playlist" layoutX="606.0" layoutY="30.0" prefHeight="30.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="플레이리스트삭제" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

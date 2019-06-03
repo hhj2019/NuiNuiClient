@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.myInfo.Myinfo_chage_controller">
+   <center>
+      <Pane fx:id="cneter_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="475.0" prefWidth="750.0" spacing="30.0" style="-fx-background-color: rgb(240,240,240);">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+                     </padding>
+                     <children>
+                        <ImageView fx:id="imgBox" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="memId" alignment="BOTTOM_CENTER" text="testuser">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="741.0" prefWidth="424.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="500.0">
+                           <children>
+                              <Label prefHeight="15.0" prefWidth="100.0" text="이름" />
+                              <JFXTextField fx:id="memName" focusColor="#8c008c" prefHeight="23.0" prefWidth="245.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="500.0">
+                           <children>
+                              <Label prefHeight="15.0" prefWidth="100.0" text="nickname" />
+                              <JFXTextField fx:id="memNick" focusColor="#8c008c" prefHeight="23.0" prefWidth="245.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="500.0">
+                           <children>
+                              <Label prefHeight="15.0" prefWidth="100.0" text="email" />
+                              <JFXTextField fx:id="memEmail" focusColor="#8c008c" prefHeight="23.0" prefWidth="245.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="500.0">
+                           <children>
+                              <Label prefHeight="15.0" prefWidth="100.0" text="phone" />
+                              <JFXTextField fx:id="memPhone" focusColor="#8c008c" prefHeight="23.0" prefWidth="245.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="500.0">
+                           <children>
+                              <JFXButton fx:id="update_btn" prefHeight="40.0" prefWidth="167.0" style="-fx-background-color: rgb(140,0,140);" text="수정하기" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

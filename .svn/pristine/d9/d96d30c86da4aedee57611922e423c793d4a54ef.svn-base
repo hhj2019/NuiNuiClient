@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.chart.chart_main_controller">
+ 
+   <center>
+      <Pane fx:id="center_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="chart_table" layoutX="33.0" layoutY="63.0" prefHeight="414.0" prefWidth="684.0">
+              <columns>
+                <TableColumn fx:id="music_rank" prefWidth="40.0" text="순위" />
+                  <TableColumn fx:id="music_img" prefWidth="100.0" />
+                  <TableColumn fx:id="music_name" prefWidth="240.0" text="곡명" />
+                  <TableColumn fx:id="music_artist" prefWidth="150.0" text="가수" />
+                  <TableColumn fx:id="album_name" prefWidth="151.0" text="앨범명" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="top100_btn" alignment="CENTER" layoutX="34.0" layoutY="33.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 15;" text="TOP100 듣기">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLAY_CIRCLE_ALT" size="14" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="listen_btn" layoutX="153.0" layoutY="33.0" onMouseClicked="#listen_musicStart" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 15;" text="듣기">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLAY_CIRCLE_ALT" size="14" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="cart_btn" layoutX="223.0" layoutY="33.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 15;" text="담기">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="14" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="down_btn" layoutX="292.0" layoutY="33.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 15;" text="다운">
+               <graphic>
+                  <FontAwesomeIconView glyphName="DOWNLOAD" size="14" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="like_btn" layoutX="361.0" layoutY="33.0" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 15;" text="     좋아요" />
+            <ImageView fx:id="like_img" fitHeight="20.0" fitWidth="20.0" layoutX="367.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@빨간하투.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

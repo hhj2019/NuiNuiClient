@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.music.music.insert_music_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="345.0" layoutY="27.0" prefHeight="30.0" prefWidth="60.0" text="노래 추가">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Line endX="298.0" layoutX="276.0" layoutY="69.0" startX="-100.0" stroke="#8c008c" />
+            <Label layoutX="246.0" layoutY="98.0" text="제목" />
+            <JFXTextField fx:id="music_title" layoutX="296.0" layoutY="91.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="234.0" layoutY="136.0" text="아티스트" />
+            <Label layoutX="246.0" layoutY="261.0" text="가사" />
+            <JFXTextArea fx:id="lyrics_field" layoutX="296.0" layoutY="251.0" prefColumnCount="60" prefHeight="130.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <JFXButton fx:id="insert_btn" layoutX="296.0" layoutY="451.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="추가" />
+            <JFXButton fx:id="cencel_btn" layoutX="409.0" layoutY="451.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="취소" />
+            <JFXTextField fx:id="artist_name" layoutX="296.0" layoutY="131.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="genre_name" layoutX="296.0" layoutY="171.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="246.0" layoutY="176.0" text="장르" />
+            <JFXButton fx:id="music_search_btn" layoutX="296.0" layoutY="396.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="음악 파일 선택" />
+            <JFXTextField fx:id="album_name" layoutX="296.0" layoutY="211.0" prefHeight="25.0" prefWidth="220.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" unFocusColor="#4d4d4d00" />
+            <Label layoutX="246.0" layoutY="216.0" text="앨범" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

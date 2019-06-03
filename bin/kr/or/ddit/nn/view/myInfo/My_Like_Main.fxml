@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:controller="kr.or.ddit.nn.view.myInfo.My_Like_Controller" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton fx:id="top100_strim_btn" layoutX="29.0" layoutY="47.0" text="TOP 100 듣기">
+         <graphic>
+            <ImageView fx:id="top100_strim_img" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="strim_btn" layoutX="148.0" layoutY="47.0" text="듣기">
+         <graphic>
+            <ImageView fx:id="strim_img" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="putcart_btn" layoutX="214.0" layoutY="47.0" text="담기">
+         <graphic>
+            <ImageView fx:id="putcart_img" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="down_btn" layoutX="280.0" layoutY="47.0" text="다운">
+         <graphic>
+            <ImageView fx:id="down_img" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="like_table" layoutX="29.0" layoutY="76.0" prefHeight="404.0" prefWidth="691.0">
+        <columns>
+          <TableColumn fx:id="chart_no_col" prefWidth="40.0" text="순위" />
+          <TableColumn fx:id="album_img_col" prefWidth="89.0" />
+            <TableColumn fx:id="song_info_col" prefWidth="200.0" text="곡정보" />
+            <TableColumn fx:id="album_name_col" prefWidth="200.0" text="앨범" />
+            <TableColumn fx:id="like_col" prefWidth="40.0" text="좋아요" />
+            <TableColumn fx:id="strim_col" prefWidth="40.0" text="듣기" />
+            <TableColumn fx:id="putcart_col" prefWidth="40.0" text="담기" />
+            <TableColumn fx:id="down_col" prefWidth="40.0" text="다운" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="playlist_btn" layoutX="501.0" layoutY="-1.0" prefHeight="35.0" prefWidth="252.0" style="-fx-border-color: rgb(140,0,140);" text="최근감상곡" />
+      <JFXButton fx:id="notice_btn" layoutX="-1.0" layoutY="-1.0" prefHeight="35.0" prefWidth="252.0" style="-fx-border-color: rgb(140,0,140);" text="플레이리스트" />
+      <JFXButton fx:id="like_btn" layoutX="250.0" layoutY="-1.0" prefHeight="35.0" prefWidth="252.0" style="-fx-border-color: rgb(140,0,140);" text="좋아요" />
+   </children>
+</Pane>

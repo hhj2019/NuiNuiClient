@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.manager.event.Event_Controller">
+   <center>
+      <Pane fx:id="in_pane" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Pagination fx:id="event_pagination" layoutX="33.0" layoutY="68.0" prefHeight="411.0" prefWidth="684.0" />
+            <TableView fx:id="event_table" layoutX="33.0" layoutY="68.0" prefHeight="366.0" prefWidth="684.0" style="-fx-fixed-cell-size: 34.1;">
+              <columns>
+                <TableColumn fx:id="event_id" prefWidth="75.0" text="NO" />
+                <TableColumn fx:id="event_title" prefWidth="416.0" text="제목" />
+                  <TableColumn fx:id="event_date" prefWidth="191.0" text="작성일" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="insert_event" layoutX="617.0" layoutY="29.0" onAction="#insert_event" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140);" text="글 추가" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

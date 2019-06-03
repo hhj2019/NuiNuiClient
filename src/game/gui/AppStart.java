@@ -1,0 +1,38 @@
+package game.gui;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+/**
+ * 
+ * @author 유형욱
+ * @version 0.5 Beta
+ */
+
+public class AppStart extends Application {
+	
+	public static Stage gameStage = new Stage();
+
+	/**
+	 * AppStart
+	 * @param args
+	 * 
+	 */
+//	public static void main(String args[]) {
+//		Application.launch(args);
+//	}
+
+	/**
+	 * start
+	 * @param primaryStage
+	 */
+	public void start(Stage primaryStage) {
+		primaryStage.setTitle("Music Quiz");
+		primaryStage.setWidth(720);
+		primaryStage.setHeight(507);
+		SceneManager sceneManager = new SceneManager(primaryStage);
+		sceneManager.goToLoginScene(sceneManager);
+		
+		gameStage = primaryStage;
+	}
+}

@@ -1,0 +1,202 @@
+package kr.or.ddit.nn.view.payment;
+
+import java.io.IOException;
+import java.net.URL;
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.jfoenix.controls.JFXTextField;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
+import kr.or.ddit.nn.main.Session;
+import kr.or.ddit.nn.service.ticket.MyTicketService;
+import kr.or.ddit.nn.service.ticket.TicketHistoryService;
+import kr.or.ddit.nn.view.download.DownloadFileController;
+import kr.or.ddit.nn.vo.ticket.MyTicketVO;
+import kr.or.ddit.nn.vo.ticket.TicketHistoryVO;
+import kr.or.ddit.nn.vo.ticket.TicketVO;
+import util.Server;
+
+public class PaymentController implements Initializable {
+	@FXML
+	private Label payment_info;
+
+	@FXML
+	private JFXTextField card_number;
+
+	@FXML
+	private JFXTextField card_date;
+
+	@FXML
+	private JFXTextField card_cvv;
+
+	@FXML
+	private Button payment_ok_btn;
+	
+	private TicketVO ticket;
+//	private List<String> selectList;
+	private List<MyTicketVO> ticketList;
+	private String payInfo;
+	private int musicId;
+	
+	public PaymentController(TicketVO ticket) {
+		this.ticket = ticket;
+		payInfo = ticket.getTicket_name()+" : " + ticket.getTicket_price()+"원";
+	}
+	
+	public PaymentController(int musicId) {
+		this.musicId = musicId;
+		payInfo = "1 개 : 600원";
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		payment_info.setText(payInfo);
+		
+		card_number.setPromptText("1234567891123456");
+		card_date.setPromptText("00/00");
+		card_cvv.setPromptText("000");
+		
+		payment_ok_btn.setOnAction(evt->{	
+			
+			Boolean result1 = checkPattern(card_number.getText().trim(), "^[1-9]{1}\\d{15}$");
+			Boolean result2 = checkPattern(card_date.getText().trim(), "^[0-1]{1}[0-9]/(19||2[0-9]{1})$");
+			Boolean result3 = checkPattern(card_cvv.getText().trim(), "^[0-9]{3}$");
+			
+			if(card_number.getText().isEmpty()
+					|| card_date.getText().isEmpty()
+					|| card_cvv.getText().isEmpty()) {
+				errMsg("입력 오류", "모든 칸을 입력해 주세요.");
+			} else if(result1 == false) {
+				errMsg("입력 오류", "올바른 카드번호를 입력해주세요.(16자리)");
+			} else if(result2 == false) {
+				errMsg("입력 오류", "올바른 유효기간을 입력해주세요.(MM/YY)");
+			} else if(result3 == false) {
+				errMsg("입력 오류", "올바른 CVV번호를 입력해주세요.(3자리)");
+			} else {
+				if(ticket != null) {
+					buyTicket();
+				}else{
+					OKMsg("결과", "결제가 완료되었습니다. 다운로드 창으로 이동합니다.");
+					Stage pStage = (Stage) payment_ok_btn.getScene().getWindow();
+					openDownloadPopup();
+					pStage.close();
+				}
+				
+			}
+			
+		});
+		
+	}
+
+	private void openDownloadPopup() {
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/kr/or/ddit/nn/view/download/download_info.fxml"));
+
+		Stage downlaodStage = new Stage();
+		DownloadFileController downloadController = new DownloadFileController(downlaodStage);
+		
+		downloadController.musicId = musicId;
+		downloadController.sampleTicketInfo = null;
+		loader.setController(downloadController);
+
+		Parent p = null;
+		try {
+			p = loader.load();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		Scene downScene = new Scene(p);
+		downlaodStage.setScene(downScene);
+		downlaodStage.show();
+		
+	}
+
+	private void buyTicket() {
+		
+		MyTicketService myService = null;
+		TicketHistoryService historyService = null;
+		try {
+			myService = (MyTicketService) Server.reg.lookup("myTicketService");
+			historyService = (TicketHistoryService) Server.reg.lookup("ticketHistoryService");
+		} catch (AccessException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		
+		MyTicketVO myTicket = new MyTicketVO();
+		myTicket.setMem_id(Session.getUser().getMem_id());
+		myTicket.setTicket_id(ticket.getTicket_id());
+		myTicket.setTicket_download_count(ticket.getTicket_download());
+		
+		TicketHistoryVO myHistory = new TicketHistoryVO();
+		myHistory.setMem_id(Session.getUser().getMem_id());
+		myHistory.setTicket_id(ticket.getTicekt_id());
+		
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(new Date());
+	    cal.add(Calendar.DATE, ticket.getTicket_day());
+		
+		myTicket.setTicket_end_date(cal.getTime());
+		
+		try {
+			int r = myService.insertMyTicket(myTicket);
+			historyService.insertHistory(myHistory);
+			if(r > 0) {
+				OKMsg("결과", ticket.getTicket_name()+"을 구입하셨습니다.");
+				Stage pStage = (Stage) payment_ok_btn.getScene().getWindow();
+				pStage.close();
+			}
+			
+		} catch (RemoteException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+	private Boolean checkPattern(String value, String pattern) {
+		Pattern p = Pattern.compile(pattern);
+		Matcher m = p.matcher(value);
+		Boolean result = m.matches();
+		return result;
+	}
+
+	public void errMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("오류");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+	
+	public void OKMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.INFORMATION);
+		errAlert.setTitle("성공");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+}

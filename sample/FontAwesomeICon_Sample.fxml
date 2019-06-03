@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: white;" stylesheets="@../../eclipse-workspace/NuiNuiClient/css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane fx:id="main_top_pane" prefHeight="93.0" prefWidth="900.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="main_logo" fitHeight="60.0" fitWidth="60.0" layoutX="312.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../JAVAFX/NuiNuiLoge.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="main_title" fitHeight="120.0" fitWidth="120.0" layoutX="364.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../JAVAFX/NuiNuiName.jpg" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="serch_textfiled" focusColor="#ddbbf4" layoutX="494.0" layoutY="33.0" prefHeight="30.0" prefWidth="300.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 5;" unFocusColor="WHITE" />
+            <JFXButton fx:id="serch_btn" layoutX="807.0" layoutY="33.0" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: rgb(140,0,140);" text="검색" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="login_btn" layoutX="75.0" layoutY="33.0" text="로그인">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <FontAwesomeIconView glyphName="USER_CIRCLE_ALT" layoutX="31.0" layoutY="59.0" size="34" />
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane fx:id="ticket_pane" prefHeight="658.0" prefWidth="969.0" style="-fx-background-color: rgb(240,240,240)4;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="33.0" layoutY="30.0" prefHeight="448.0" prefWidth="685.0">
+               <children>
+                  <HBox prefHeight="150.0" prefWidth="500.0">
+                     <children>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox prefHeight="150.0" prefWidth="288.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="299.0" text="Label">
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="16.0" prefWidth="311.0" text="Label">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="15.0" prefWidth="170.0" text="Label">
+                           <HBox.margin>
+                              <Insets top="70.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXButton text="구매">
+                           <HBox.margin>
+                              <Insets left="30.0" top="65.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="150.0" prefWidth="500.0">
+                     <children>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox prefHeight="150.0" prefWidth="288.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="299.0" text="Label">
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="16.0" prefWidth="311.0" text="Label">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="15.0" prefWidth="170.0" text="Label">
+                           <HBox.margin>
+                              <Insets top="70.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXButton text="구매">
+                           <HBox.margin>
+                              <Insets left="30.0" top="65.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="150.0" prefWidth="500.0">
+                     <children>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox prefHeight="150.0" prefWidth="288.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="299.0" text="Label">
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="16.0" prefWidth="311.0" text="Label">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="15.0" prefWidth="170.0" text="Label">
+                           <HBox.margin>
+                              <Insets top="70.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXButton text="구매">
+                           <HBox.margin>
+                              <Insets left="30.0" top="65.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <Pane prefHeight="500.0" prefWidth="150.0" style="-fx-background-color: rgb(140,0,140);" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="507.0" prefWidth="152.0">
+               <children>
+                  <JFXButton fx:id="chart_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="늬늬차트" textFill="WHITE">
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="LINE_CHART" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="genre_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="장르" textFill="WHITE" wrapText="true">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="TAGS" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="chatbot_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="챗봇" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="WECHAT" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="info_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="고객센터" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="QUESTION_CIRCLE_ALT" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="titcket_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="이용권" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_CART" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="event_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="이벤트" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="BELL_ALT" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="newmusic_btn" alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="150.0" ripplerFill="WHITE" text="최신" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="STAR" size="14" wrappingWidth="22.0" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

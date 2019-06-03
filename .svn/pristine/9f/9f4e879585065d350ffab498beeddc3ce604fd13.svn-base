@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.myInfo.MyInfo_GradeController">
+   <children>
+      <JFXButton fx:id="buyhistory_btn" layoutX="250.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="구매 이력" />
+      <JFXButton fx:id="myinfo_btn" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="내정보관리" />
+      <JFXButton fx:id="mylevel_btn" layoutX="125.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="내 등급" />
+      <JFXButton fx:id="playlist_btn" layoutX="625.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="플레이리스트" />
+      <JFXButton fx:id="musichistory_btn" layoutX="375.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="다운로드 내역" />
+      <JFXButton fx:id="like_btn" layoutX="500.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="좋아요" />
+      <HBox alignment="CENTER" layoutY="33.0" prefHeight="475.0" prefWidth="750.0" spacing="30.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+               <children>
+                  <ImageView fx:id="imgBox" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../5.JQuery/webPro/WebContent/images/cat03.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="memGrade" alignment="BOTTOM_CENTER" text="text">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="424.0">
+               <children>
+                  <Label fx:id="memId11" alignment="CENTER" contentDisplay="CENTER" prefHeight="151.0" prefWidth="424.0" text="등급설명" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VIP : 5년 정기구독" textAlignment="CENTER" wrappingWidth="360.7109375">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GOLD : 3년 정기구독" textAlignment="CENTER" wrappingWidth="360.7109375">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SILVER : 1년 정기구독" textAlignment="CENTER" wrappingWidth="360.7109375">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUI*2 : 이용권 없음" textAlignment="CENTER" wrappingWidth="360.7109375">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</Pane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.myInfo.MyInfo_TicketHistoryController">
+   <children>
+      <JFXButton fx:id="buyhistory_btn" layoutX="250.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="구매 이력" />
+      <JFXButton fx:id="myinfo_btn" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="내정보관리" />
+      <JFXButton fx:id="mylevel_btn" layoutX="125.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="내 등급" />
+      <JFXButton fx:id="playlist_btn" layoutX="625.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="플레이리스트" />
+      <JFXButton fx:id="musichistory_btn" layoutX="375.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="다운로드 내역" />
+      <JFXButton fx:id="like_btn" layoutX="500.0" prefHeight="35.0" prefWidth="125.0" style="-fx-border-color: rgb(140,0,140);" text="좋아요" />
+      <TableView fx:id="ticket_table" layoutX="33.0" layoutY="67.0" prefHeight="407.0" prefWidth="684.0" style="-fx-fixed-cell-size: 32.5;">
+         <columns>
+            <TableColumn fx:id="ticket_id" prefWidth="71.0" text="NO" />
+            <TableColumn fx:id="ticket_name" prefWidth="458.0" text="내용" />
+            <TableColumn fx:id="ticket_date" prefWidth="154.0" text="구입일" />
+         </columns>
+      </TableView>
+   </children>
+</Pane>

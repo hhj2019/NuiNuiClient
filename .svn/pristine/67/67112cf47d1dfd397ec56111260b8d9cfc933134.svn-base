@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" style="-fx-border-color: rgb(140,0,140);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.chart.Chart_playlistitem_controller">
+   <center>
+      <Pane prefHeight="507.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" style="-fx-border-color: rgb(140,0,140);">
+               <children>
+                  <Label alignment="CENTER" layoutX="315.0" layoutY="14.0" prefHeight="30.0" prefWidth="120.0" text="MY 플레이리스트">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="650.0" layoutX="101.0" layoutY="56.0" startX="-100.0" stroke="#8c008c" />
+                  <JFXButton fx:id="close_btn" layoutX="325.0" layoutY="460.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="돌아가기" />
+                  <TableView fx:id="playlist_table" layoutX="2.0" layoutY="56.0" prefHeight="361.0" prefWidth="746.0">
+                    <columns>
+                        <TableColumn fx:id="music_id_col" prefWidth="43.0" text="ID" />
+                      <TableColumn fx:id="music_name_col" prefWidth="180.0" text="제목" />
+                        <TableColumn fx:id="artist_name_col" prefWidth="97.0" text="이름" />
+                        <TableColumn fx:id="music_playtime_col" prefWidth="313.0" text="플레이타임" />
+                        <TableColumn fx:id="album_name_col" prefWidth="109.0" text="앨범이름" />
+                    </columns>
+                  </TableView>
+                  <Pagination fx:id="pge" layoutX="-1.0" layoutY="56.0" prefHeight="404.0" prefWidth="750.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.CustomerService.CS_main_controller">
+   <top>
+      <Pane fx:id="top_pane" prefHeight="35.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="notice_btn" onAction="#notice_btn" prefHeight="35.0" prefWidth="188.0" style="-fx-border-color: rgb(140,0,140);" text="공지사항">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="faq_btn" layoutX="187.0" onAction="#faq_btn" prefHeight="35.0" prefWidth="188.0" style="-fx-border-color: rgb(140,0,140);" text="자주묻는질문">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="qna_btn" layoutX="374.0" onAction="#qna_btn" prefHeight="35.0" prefWidth="188.0" style="-fx-border-color: rgb(140,0,140);" text="Q&amp;A">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="report_btn" layoutX="561.0" onAction="#report_btn" prefHeight="35.0" prefWidth="189.0" style="-fx-border-color: rgb(140,0,140);" text="신고하기">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane fx:id="center_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="33.0" layoutY="30.0" prefHeight="200.0" prefWidth="685.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 5;">
+               <children>
+                  <Label layoutX="20.0" layoutY="10.0" text="공지사항">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="583.0" layoutX="101.0" layoutY="35.0" startX="-100.0" />
+                  <TableView fx:id="main_notice_table" layoutX="15.0" layoutY="45.0" prefHeight="145.0" prefWidth="655.0" style="-fx-fixed-cell-size: 39;">
+                    <columns>
+                      <TableColumn fx:id="notice_id" prefWidth="75.0" text="NO" />
+                      <TableColumn fx:id="notice_title" prefWidth="396.0" text="제목" />
+                        <TableColumn fx:id="notice_date" prefWidth="182.0" text="작성일" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane layoutX="33.0" layoutY="243.0" prefHeight="200.0" prefWidth="685.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 5;">
+               <children>
+                  <Label layoutX="20.0" layoutY="10.0" text="자주묻는질문">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="583.0" layoutX="100.0" layoutY="35.0" startX="-100.0" />
+                  <TableView fx:id="main_faq_table" layoutX="15.0" layoutY="45.0" prefHeight="145.0" prefWidth="655.0" style="-fx-fixed-cell-size: 39;">
+                     <columns>
+                        <TableColumn fx:id="faq_id" prefWidth="75.0" text="NO" />
+                        <TableColumn fx:id="faq_title" prefWidth="396.0" text="제목" />
+                        <TableColumn fx:id="faq_date" prefWidth="182.0" text="작성일" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

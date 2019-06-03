@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.CustomerService.faq.CS_faq_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <Pagination fx:id="faq_pagination" layoutX="33.0" layoutY="30.0" prefHeight="384.0" prefWidth="684.0" />
+            <TableView fx:id="faq_table" layoutX="33.0" layoutY="30.0" prefHeight="343.0" prefWidth="684.0" style="-fx-fixed-cell-size: 31.4;">
+              <columns>
+                <TableColumn fx:id="faq_id" prefWidth="75.0" text="NO" />
+                <TableColumn fx:id="faq_title" prefWidth="416.0" text="제목" />
+                  <TableColumn fx:id="faq_date" prefWidth="191.0" text="작성일" />
+              </columns>
+            </TableView>
+            <JFXTextField fx:id="search_text" focusColor="#8c008c" layoutX="288.0" layoutY="416.0" prefHeight="25.0" prefWidth="200.0" unFocusColor="#8a008a" />
+            <ChoiceBox fx:id="search_choice" layoutX="154.0" layoutY="416.0" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: white; -fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" />
+            <JFXButton fx:id="search_btn" layoutX="510.0" layoutY="416.0" prefHeight="25.0" prefWidth="60.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3; -fx-background-color: white;" text="검색" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

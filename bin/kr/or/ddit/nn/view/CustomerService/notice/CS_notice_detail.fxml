@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="Main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.nn.view.CustomerService.notice.CS_detail_controller">
+   <center>
+      <Pane fx:id="center_pane" prefHeight="472.0" prefWidth="750.0" style="-fx-background-color: rgb(240,240,240);" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="notice_ok_btn" layoutX="325.0" layoutY="412.0" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: rgb(140,0,140); -fx-border-radius: 3;" text="목록보기" />
+            <Line endX="568.0" layoutX="149.0" layoutY="30.0" startX="-116.0" />
+            <Line endX="568.0" layoutX="148.0" layoutY="397.0" startX="-116.0" />
+            <Line endX="568.0" layoutX="148.0" layoutY="86.0" startX="-116.0" />
+            <JFXTextField fx:id="notice_title" focusColor="#f0f0f0" layoutX="52.0" layoutY="44.0" prefHeight="30.0" prefWidth="400.0" unFocusColor="#4d4d4d00" />
+            <Label layoutX="484.0" layoutY="52.0" text="작성일">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="notice_date" focusColor="#f0f0f0" layoutX="531.0" layoutY="44.0" prefHeight="30.0" prefWidth="160.0" unFocusColor="#4d4d4d00" />
+            <JFXTextArea fx:id="notice_content" focusColor="#f0f0f0" layoutX="56.0" layoutY="98.0" prefHeight="286.0" prefWidth="636.0" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
